@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A11y Boilerplate Demo</title>
+  
+  <!-- Accessibility Stylesheet - ALTIJD EERSTE LADEN -->
+  <link rel="stylesheet" href="a11y-boilerplate.css">
+  
+  <!-- Tailwind CSS (of andere frameworks) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <style>
+    /* Voorbeeld: Custom theme color definiëren */
+    :root {
+      --a11y-primary: #7c3aed; /* Violet voor dit voorbeeld */
+      --a11y-primary-dark: #6d28d9;
+    }
+    
+    /* Basis styling voor demo */
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body class="bg-gray-50">
+  
+  <!-- SKIP LINK - Altijd als eerste in <body> -->
+  <a href="#main-content" class="skip-link">
+    Spring naar hoofdinhoud
+  </a>
+  
+  <!-- Header met navigatie -->
+  <header class="bg-white shadow-sm">
+    <nav class="container mx-auto px-4 py-4" role="navigation" aria-label="Hoofdnavigatie">
+      <div class="flex items-center justify-between">
+        <a href="/" class="text-2xl font-bold text-gray-900">
+          Logo
+        </a>
+        
+        <ul class="flex gap-6">
+          <li><a href="#" class="text-gray-700 hover:text-gray-900">Home</a></li>
+          <li><a href="#" class="text-gray-700 hover:text-gray-900">Over ons</a></li>
+          <li><a href="#" class="text-gray-700 hover:text-gray-900">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  
+  <!-- Main content -->
+  <main id="main-content" class="container mx-auto px-4 py-8">
+    
+    <!-- Intro sectie -->
+    <section class="mb-12">
+      <h1 class="text-4xl font-bold mb-4 text-gray-900">
+        Accessibility Boilerplate Demo
+      </h1>
+      <p class="text-lg text-gray-700">
+        Deze pagina demonstreert de toegankelijkheidsverbeteringen. 
+        <strong>Probeer met Tab te navigeren</strong> om de focus states te zien!
+      </p>
+    </section>
+    
+    <!-- Buttons demo -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold mb-4 text-gray-900">
+        Interactieve elementen
+      </h2>
+      
+      <div class="flex flex-wrap gap-4">
+        <button class="bg-violet-600 text-white px-6 py-3 rounded-lg hover:bg-violet-700 transition-colors">
+          Primaire button
+        </button>
+        
+        <button class="bg-gray-200 text-gray-900 px-6 py-3 rounded-lg hover:bg-gray-300 transition-colors">
+          Secundaire button
+        </button>
+        
+        <button disabled class="bg-violet-600 text-white px-6 py-3 rounded-lg">
+          Disabled button
+        </button>
+        
+        <a href="#" class="inline-block bg-violet-600 text-white px-6 py-3 rounded-lg hover:bg-violet-700 transition-colors">
+          Link als button
+        </a>
+      </div>
+    </section>
+    
+    <!-- Form demo -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold mb-4 text-gray-900">
+        Formulier voorbeelden
+      </h2>
+      
+      <form class="max-w-lg space-y-6">
+        <!-- Text input -->
+        <div>
+          <label for="name" class="block text-sm font-medium text-gray-900 mb-2">
+            Naam <span class="text-red-600" aria-label="verplicht">*</span>
+          </label>
+          <input 
+            type="text" 
+            id="name" 
+            name="name"
+            required
+            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-violet-600 focus:ring-2 focus:ring-violet-600"
+            placeholder="Jouw naam"
+          >
+        </div>
+        
+        <!-- Email input -->
+        <div>
+          <label for="email" class="block text-sm font-medium text-gray-900 mb-2">
+            E-mail <span class="text-red-600" aria-label="verplicht">*</span>
+          </label>
+          <input 
+            type="email" 
+            id="email" 
+            name="email"
+            required
+            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-violet-600 focus:ring-2 focus:ring-violet-600"
+            placeholder="jouw@email.nl"
+          >
+          <p class="mt-1 text-sm text-gray-600">
+            We delen je e-mailadres nooit met anderen.
+          </p>
+        </div>
+        
+        <!-- Textarea -->
+        <div>
+          <label for="message" class="block text-sm font-medium text-gray-900 mb-2">
+            Bericht
+          </label>
+          <textarea 
+            id="message" 
+            name="message"
+            rows="4"
+            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-violet-600 focus:ring-2 focus:ring-violet-600"
+            placeholder="Je bericht..."
+          ></textarea>
+        </div>
+        
+        <!-- Checkboxes -->
+        <fieldset>
+          <legend class="block text-sm font-medium text-gray-900 mb-2">
+            Interesses
+          </legend>
+          
+          <div class="space-y-2">
+            <div class="flex items-center">
+              <input 
+                type="checkbox" 
+                id="design" 
+                name="interests"
+                value="design"
+                class="w-5 h-5 text-violet-600 border-gray-300 rounded focus:ring-violet-600"
+              >
+              <label for="design" class="ml-2 text-gray-900">
+                Design
+              </label>
+            </div>
+            
+            <div class="flex items-center">
+              <input 
+                type="checkbox" 
+                id="development" 
+                name="interests"
+                value="development"
+                class="w-5 h-5 text-violet-600 border-gray-300 rounded focus:ring-violet-600"
+              >
+              <label for="development" class="ml-2 text-gray-900">
+                Development
+              </label>
+            </div>
+            
+            <div class="flex items-center">
+              <input 
+                type="checkbox" 
+                id="accessibility" 
+                name="interests"
+                value="accessibility"
+                class="w-5 h-5 text-violet-600 border-gray-300 rounded focus:ring-violet-600"
+              >
+              <label for="accessibility" class="ml-2 text-gray-900">
+                Accessibility
+              </label>
+            </div>
+          </div>
+        </fieldset>
+        
+        <!-- Radio buttons -->
+        <fieldset>
+          <legend class="block text-sm font-medium text-gray-900 mb-2">
+            Ervaring <span class="text-red-600" aria-label="verplicht">*</span>
+          </legend>
+          
+          <div class="space-y-2">
+            <div class="flex items-center">
+              <input 
+                type="radio" 
+                id="beginner" 
+                name="experience"
+                value="beginner"
+                required
+                class="w-5 h-5 text-violet-600 border-gray-300 focus:ring-violet-600"
+              >
+              <label for="beginner" class="ml-2 text-gray-900">
+                Beginner
+              </label>
+            </div>
+            
+            <div class="flex items-center">
+              <input 
+                type="radio" 
+                id="intermediate" 
+                name="experience"
+                value="intermediate"
+                class="w-5 h-5 text-violet-600 border-gray-300 focus:ring-violet-600"
+              >
+              <label for="intermediate" class="ml-2 text-gray-900">
+                Intermediate
+              </label>
+            </div>
+            
+            <div class="flex items-center">
+              <input 
+                type="radio" 
+                id="advanced" 
+                name="experience"
+                value="advanced"
+                class="w-5 h-5 text-violet-600 border-gray-300 focus:ring-violet-600"
+              >
+              <label for="advanced" class="ml-2 text-gray-900">
+                Gevorderd
+              </label>
+            </div>
+          </div>
+        </fieldset>
+        
+        <!-- Select -->
+        <div>
+          <label for="country" class="block text-sm font-medium text-gray-900 mb-2">
+            Land
+          </label>
+          <select 
+            id="country" 
+            name="country"
+            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-violet-600 focus:ring-2 focus:ring-violet-600"
+          >
+            <option value="">Selecteer een land</option>
+            <option value="nl">Nederland</option>
+            <option value="be">België</option>
+            <option value="de">Duitsland</option>
+          </select>
+        </div>
+        
+        <!-- Submit -->
+        <div>
+          <button 
+            type="submit"
+            class="bg-violet-600 text-white px-6 py-3 rounded-lg hover:bg-violet-700 transition-colors w-full font-medium"
+          >
+            Verstuur formulier
+          </button>
+        </div>
+      </form>
+    </section>
+    
+    <!-- Links in tekst -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold mb-4 text-gray-900">
+        Links in lopende tekst
+      </h2>
+      
+      <div class="prose max-w-none">
+        <p class="text-gray-700">
+          Dit is een paragraaf met een <a href="#" class="text-violet-600 underline hover:text-violet-700">inline link</a> 
+          die duidelijk zichtbaar is. Let op de focus state wanneer je er met Tab doorheen navigeert.
+        </p>
+        
+        <p class="text-gray-700">
+          Meer informatie over toegankelijkheid vind je op de 
+          <a href="https://www.toegankelijkheidsverklaring.nl/" class="text-violet-600 underline hover:text-violet-700">
+            website van de Nederlandse overheid
+          </a>.
+        </p>
+      </div>
+    </section>
+    
+    <!-- Screen reader only demo -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold mb-4 text-gray-900">
+        Screen reader only content
+      </h2>
+      
+      <div class="bg-white p-6 rounded-lg border border-gray-200">
+        <span class="sr-only">
+          Deze tekst is alleen zichtbaar voor screen readers
+        </span>
+        
+        <p class="text-gray-700">
+          Deze sectie bevat verborgen tekst voor screen readers. 
+          Open je browser's inspector om de .sr-only class te zien.
+        </p>
+        
+        <button class="mt-4 bg-violet-600 text-white px-6 py-2 rounded-lg">
+          Button
+          <span class="sr-only">(opent in nieuw venster)</span>
+        </button>
+      </div>
+    </section>
+    
+    <!-- Keyboard navigation tip -->
+    <section class="mb-12">
+      <div class="bg-violet-50 border border-violet-200 rounded-lg p-6">
+        <h3 class="text-lg font-bold text-violet-900 mb-2">
+          💡 Tip: Test met je toetsenbord
+        </h3>
+        <ul class="text-violet-900 space-y-1">
+          <li>• Gebruik <kbd class="bg-white px-2 py-1 rounded border border-violet-300">Tab</kbd> om door elementen te navigeren</li>
+          <li>• Gebruik <kbd class="bg-white px-2 py-1 rounded border border-violet-300">Shift + Tab</kbd> om terug te gaan</li>
+          <li>• Gebruik <kbd class="bg-white px-2 py-1 rounded border border-violet-300">Enter</kbd> of <kbd class="bg-white px-2 py-1 rounded border border-violet-300">Space</kbd> om te activeren</li>
+          <li>• Let op de duidelijke focus indicators!</li>
+        </ul>
+      </div>
+    </section>
+    
+  </main>
+  
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white mt-12">
+    <div class="container mx-auto px-4 py-8">
+      <p class="text-center text-gray-400">
+        &copy; 2025 Accessibility Boilerplate. 
+        Voldoet aan European Accessibility Act & WCAG 2.1 Level AA.
+      </p>
+    </div>
+  </footer>
+  
+</body>
+</html>
